@@ -1,0 +1,12 @@
+<html>
+  <head>
+    <title>Hacker News</title>
+    <link rel="stylesheet" href="/public/static/css/index.css" />
+  </head>
+  <body>
+    <form action="{{ url }}" method="post">
+      <input type="text" name="name" value="Natural" />
+      <input type="submit" value="提交" />
+    </form>
+  </body>
+</html>

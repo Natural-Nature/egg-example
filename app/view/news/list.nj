@@ -1,0 +1,20 @@
+<!-- app/view/news/list.tpl -->
+<html>
+  <head>
+    <title>Hacker News</title>
+    <link rel="stylesheet" href="/public/static/css/index.css" />
+  </head>
+  <body>
+    <h2>Autor: {{ autor }}</h2>
+    <h4>Name: {{ name }}</h4>
+    <h6>Name2: {{ name2 }}</h6>
+    <ul class="news-view view">
+      {% for item in list %}
+        <li class="item">
+          <a href="{{ item.url }}">{{ item.title }}
+            {{ helper.relativeTime(item.time) }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

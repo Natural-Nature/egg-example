@@ -1,0 +1,24 @@
+{
+  "extends": "eslint-config-egg/typescript",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "eqeqeq": "warn", // 等号
+    "indent": "off", // 缩进
+    "quotes": "off", // ["error", "double"] // 双引号
+    "semi": "off", //["error", "always"], // 分号
+    "array-bracket-spacing": "off", // 数组内空格警告
+    "no-console": "off", // 控制台输出警告
+    "comma-dangle": "off", // 数组等末尾逗号
+    "no-unused-vars": "off", // 未使用参数警告
+    "@typescript-eslint/no-unused-vars": [
+      "off", // "error"
+      {
+        "vars": "all",
+        "args": "after-used",
+        "ignoreRestSiblings": false
+      }
+    ]
+  }
+}
