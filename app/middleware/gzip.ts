@@ -1,6 +1,8 @@
-import zlib from "zlib";
 import { Application, Context } from "egg";
 import helper from "../extend/helper";
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const zlib = require("zlib");
 
 module.exports = (options: any, app: Application) => {
   return async function gzip(ctx: Context, next: Function) {

@@ -49,10 +49,10 @@ export default (appInfo: EggAppInfo): object => {
   config.middleware = ["robot", "gzip", "errorHandler"];
   config.robot = { ua: [/curl/i, /Baiduspider/i] };
   config.gzip = {
-    threshold: 1024, // 小于 1k 的响应体不压缩
+    threshold: 100, // 小于 1k 的响应体不压缩  1024
   };
   config.errorHandler = {
-    match: "/api",
+    match: "/api", // 这里的参数填写居然直接有效，直接针对path过滤
   };
 
   /** 添加关于页面路由具体相关的配置 **/
