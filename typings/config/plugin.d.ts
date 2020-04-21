@@ -16,6 +16,8 @@ import 'egg-jsonp';
 import 'egg-view';
 import 'egg-view-nunjucks';
 import 'egg-validate';
+import 'egg-passport';
+import 'egg-passport-github';
 import { EggPluginItem } from 'egg';
 declare module 'egg' {
   interface EggPlugin {
@@ -33,5 +35,7 @@ declare module 'egg' {
     view?: EggPluginItem;
     nunjucks?: EggPluginItem;
     validate?: EggPluginItem;
+    passport?: EggPluginItem;
+    passportGithub?: EggPluginItem;
   }
 }

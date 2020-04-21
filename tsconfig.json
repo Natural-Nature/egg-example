@@ -23,10 +23,10 @@
     "allowUnusedLabels": false,
     "strictPropertyInitialization": false,
     "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": true,
+    // "skipLibCheck": true, // tsc 编译的时候会忽略 d.ts 中的类型校验
     "skipDefaultLibCheck": true,
     "inlineSourceMap": true,
     "importHelpers": true
   },
-  "exclude": ["app/public", "app/views", "node_modules*"]
+  "exclude": ["app/public", "app/web", "app/views", "node_modules*"]
 }

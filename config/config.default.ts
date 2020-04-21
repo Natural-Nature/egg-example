@@ -47,7 +47,9 @@ export default (appInfo: EggAppInfo): object => {
 
   // add your egg config in here
   config.middleware = ["robot", "gzip", "errorHandler"];
-  config.robot = { ua: [/curl/i, /Baiduspider/i] };
+  config.robot = {
+    ua: [/curl/i, /Baiduspider/i],
+  };
   config.gzip = {
     threshold: 100, // 小于 1k 的响应体不压缩  1024
   };
@@ -87,7 +89,9 @@ export default (appInfo: EggAppInfo): object => {
     },
     json(err: Error, ctx: Context) {
       // json hander
-      ctx.body = { message: "error" };
+      ctx.body = {
+        message: "error",
+      };
       ctx.status = 500;
     },
     jsonp(err: Error, ctx: Context) {
@@ -114,6 +118,21 @@ export default (appInfo: EggAppInfo): object => {
   // };
 
   // the return config will combines to EggAppConfig
+
+  config.passportGithub = {
+    key: "your_clientID",
+    secret: "your_clientSecret",
+    // callbackURL: '/passport/github/callback',
+    // proxy: false,
+  };
+
+  // 发布后的配置
+  config.proxy = true;
+  config.ipHeaders = "X-Real-Ip, X-Forwarded-For"; // 应用会解析 X-Forwarded-For 请求头来获取客户端的真实 IP
+  config.maxIpsCount = 1; // 此配置项与 koa 提供的 options.maxIpsCount 作用一致。
+  config.protocolHeaders = "X-Real-Proto, X-Forwarded-Proto"; // 开启 proxy 配置后，应用会解析 X-Forwarded-Proto 请求头来获取客户端的真实访问协议。
+  config.hostHeaders = "X-Forwarded-Host"; // 开启 proxy 配置后，应用仍然还是直接读取 host 来获取请求的域名，绝大部分反向代理并不会修改这个值。但是也许有些反向代理会通过 X-Forwarded-Host 来传递客户端的真实访问域名，可以通过在 config.hostHeaders 中配置，这个配置项支持配置多个头（逗号分开）。
+
   return {
     ...config,
   };

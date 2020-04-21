@@ -8,6 +8,7 @@
     "declarations": true
   },
   "scripts": {
+    "tsc": "ets && tsc -p tsconfig.json",
     "start": "egg-scripts start --port=7000 --daemon --title=egg-server-ts",
     "stop": "egg-scripts stop --title=egg-server-ts",
     "dev": "egg-bin dev --port 7001",
@@ -16,7 +17,6 @@
     "test": "npm run lint -- --fix && npm run test-local",
     "test:only": "TESTS=test/x.test.js npm test-local",
     "cov": "egg-bin cov",
-    "tsc": "ets && tsc -p tsconfig.json",
     "ci": "eslint . && NODE_ENV=test npx sequelize db:migrate && egg-bin cov",
     "autod": "autod",
     "lint": "eslint . --ext .ts",
@@ -26,6 +26,8 @@
     "cross-env": "^7.0.2",
     "egg": "^2.6.1",
     "egg-mysql": "^3.0.0",
+    "egg-passport": "^2.1.1",
+    "egg-passport-github": "^1.0.0",
     "egg-scripts": "^2.6.0",
     "egg-sequelize": "^5.2.1",
     "egg-validate": "^2.0.2",

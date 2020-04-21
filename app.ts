@@ -1,7 +1,6 @@
-import { Application, Context, ClientErrorResponse } from "egg";
-import { ServerResponse } from "http";
+import { Application, IBoot } from "egg";
 
-class AppBootHook {
+class AppBootHook implements IBoot {
   app: Application;
   constructor(app: Application) {
     app.locals = {
@@ -20,6 +19,9 @@ class AppBootHook {
     // 例如：插入一个中间件到框架的 coreMiddleware 之间
     // const statusIdx = this.app.config.coreMiddleware.indexOf("status");
     // this.app.config.coreMiddleware.splice(statusIdx + 1, 0, "limit");
+  }
+  configDidLoad() {
+    // Config, plugin files have loaded.
   }
 
   async didLoad() {
@@ -41,6 +43,12 @@ class AppBootHook {
     // this.app.cacheData = await this.app.model.query(QUERY_CACHE_SQL);
   }
 
+  async didReady() {
+    // 应用已经启动完毕
+    // const ctx = await this.app.createAnonymousContext();
+    // await ctx.service.Biz.request();
+  }
+
   async beforeStart() {
     // 保证应用启动监听端口前数据已经准备好了
     // 后续数据的更新由定时任务自动触发
@@ -51,18 +59,16 @@ class AppBootHook {
     // this.app.database = this.app.mysql.createInstance(mysqlConfig);
   }
 
-  async didReady() {
-    // 应用已经启动完毕
-    // const ctx = await this.app.createAnonymousContext();
-    // await ctx.service.Biz.request();
-  }
-
   async serverDidReady() {
     // http / https server 已启动，开始接受外部请求
     // 此时可以从 app.server 拿到 server 的实例
     // this.app.server.on("timeout", (socket) => {
     //   // handle socket timeout
     // });
+  }
+
+  async beforeClose() {
+    // Do some thing before close
   }
 }
 
